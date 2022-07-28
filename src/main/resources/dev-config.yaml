@@ -1,0 +1,22 @@
+http:
+  host: "127.0.0.1"
+  port: "8085"
+  readTimeout: "30000"
+  
+oauth2:
+  base_url: "anypoint.mulesoft.com"
+  port: "443"
+  token_url: "/accounts/oauth2/token"
+
+osv2:
+  base_url: "object-store-us-east-2.anypoint.mulesoft.com"
+  client_id: "412fd88ce17148108fb515786e4d0e57"
+  client_secret: "687b97BD77b74294b3b51E650DfcF4D9"
+  store: "APP_osv2-store-retrieve-same-app__defaultPersistentObjectStore"
+  partition: "OSV2"
+  
+org_id: "0f1c6c81-c54f-4259-8775-7cea31d4c5a3"
+env_id: "f7c14579-e0d9-4cd3-ae7c-a94c7d9d0b91"
+
+tls:
+  password: "password"

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:tls="http://www.mulesoft.org/schema/mule/tls"
+	xmlns:os="http://www.mulesoft.org/schema/mule/os"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/current/mule-tls.xsd 
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd 
+http://www.mulesoft.org/schema/mule/http 
+http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd 
+http://www.mulesoft.org/schema/mule/core 
+http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/current/mule-os.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="75891d37-bf44-4358-9311-f612e2b0b8ce" >
+		<http:listener-connection host="0.0.0.0" port="${http.port}" readTimeout="${http.readTimeout}"/>
+	</http:listener-config>
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="5703262a-02e9-4810-8123-3f26a315a19a" >
+		<http:request-connection protocol="HTTPS" host="${oauth2.base_url}" port="${oauth2.port}" >
+			<tls:context >
+				<tls:key-store type="jks" path="keystore.jks" keyPassword="${tls.password}" password="${tls.password}" />
+			</tls:context>
+		</http:request-connection>
+	</http:request-config>
+	<http:request-config name="OSV2_HTTPS_Request_configuration" doc:name="HTTP Request configuration" doc:id="21154e5e-f27c-458d-bd54-5d2cd8b00bfe" >
+		<http:request-connection protocol="HTTPS" host="${osv2.base_url}" port="443" />
+	</http:request-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="36b328c5-fadc-4725-9677-1bdfc5e359d6" file="${env}-config.yaml" />
+
+</mule>
